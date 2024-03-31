@@ -28,7 +28,8 @@ createApp({
     data(){
         return{
             slides: slides,
-            currentImage: 0
+            currentImage: 0,
+            autoPlay: null
         }
     },
 
@@ -38,17 +39,24 @@ createApp({
                 this.currentImage++
             } else {
                 this.currentImage = 0
-            }   
+            } ;
         },
         prevSlide(){
             if(this.currentImage === 0){
                 this.currentImage = this.slides.length - 1
             } else {
                 this.currentImage--
-            }
+            };
+        },
+        stopAutoPlay(){
+            clearInterval(this.autoPlay);
+            this.autoPlay = null;
+        },
+        restartAutoPlay(){
+        this.autoPlay = setInterval(this.nextSlide,3000);
         }
     },
     mounted(){
-        setInterval(this.nextSlide,3000)
+        this.autoPlay = setInterval(this.nextSlide,3000);
     }
 }).mount('#app');
