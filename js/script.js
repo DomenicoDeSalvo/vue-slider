@@ -28,7 +28,16 @@ createApp({
     data(){
         return{
             slides: slides,
+            currentImage: 0,
+        }
+    },
 
+    methods: {
+        nextSlide(){
+            this.currentImage++
+        },
+        prevSlide(){
+            this.currentImage--
         }
     }
 }).mount('#app');
