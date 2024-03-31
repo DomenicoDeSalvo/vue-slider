@@ -34,10 +34,18 @@ createApp({
 
     methods: {
         nextSlide(){
-            this.currentImage++
+            if(this.currentImage < this.slides.length - 1){
+                this.currentImage++
+            } else {
+                this.currentImage = 0
+            }   
         },
         prevSlide(){
-            this.currentImage--
+            if(this.currentImage === 0){
+                this.currentImage = this.slides.length - 1
+            } else {
+                this.currentImage--
+            }
         }
     }
 }).mount('#app');
